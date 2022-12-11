@@ -1,0 +1,168 @@
+openapi: 3.0.0
+
+info:
+  version: 0.0.1
+  title: Prueba tecnica Santiago
+  description: Prueba tecnica Santiago
+
+servers:
+  - url: http://localhost:8080/
+    description: API location
+
+tags:
+  - name: "StarWars"
+
+
+paths:
+
+  /StarWars/createMission:
+
+    post:
+      summary: Create new mission
+      tags:
+        - "StarWars"
+      description: This is a description
+      operationId: postCreateMission
+      requestBody:
+        description: description
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MissionDTO'
+      responses:
+        "201":
+          description: CREATED
+  /StarWars/listMission:
+    parameters:
+      - name: captain
+        description: list of captain ids
+        schema:
+          type: array
+          items:
+            type: integer
+        in: query
+        required: false
+    get:
+      summary: Returns list of mission.
+      tags:
+        - "StarWars"
+      description: This is a description
+      operationId: getStarWarsListMission
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMissionResponseDTO'
+        "400":
+          description: BAD REQUEST
+        "401":
+          description: UNAUTH
+  /StarWars/recommendedMission:
+    parameters:
+      - name: criterion
+        description: criterion
+        schema:
+          enum:
+            - reward
+            - rewardHour
+          type: string
+        in: query
+        required: true
+    get:
+      summary: Returns a recommended mission.
+      tags:
+        - "StarWars"
+      description: This is a description
+      operationId: getStarWarsRecommendedMission
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMissionResponseDTO'
+        "400":
+          description: BAD REQUEST
+        "401":
+          description: UNAUTH
+components:
+
+  schemas:
+    MissionDTO:
+      description: This is the mission model
+      type: object
+      required:
+        - startDate
+        - starshipId
+        - captainIds
+        - crew
+        - planetIds
+      properties:
+        startDate:
+          type: string
+        starshipId:
+          type: integer
+        captainIds:
+          type: array
+          items:
+            type: integer
+        crew:
+          type: integer
+        planetIds:
+          type: array
+          items:
+            type: integer
+    ListMissionResponseDTO:
+      description: This is the response of list missions
+      type: array
+      items:
+        $ref: '#/components/schemas/InfoMission'
+    InfoMission:
+      type: object
+      properties:
+        startDate:
+          type: string
+        endDate:
+          type: string
+        crew:
+          type: integer
+        starship:
+          $ref: '#/components/schemas/Starship'
+        captains:
+          type: array
+          items:
+            $ref: '#/components/schemas/Captain'
+        planets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Planet'
+    Starship:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        crew:
+          type: integer
+        passengers:
+          type: integer
+    Captain:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    Planet:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        diameter:
+          type: integer

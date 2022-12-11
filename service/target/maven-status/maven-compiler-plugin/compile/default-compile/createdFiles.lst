@@ -1,0 +1,4 @@
+org\example\PTSantiago\PTSantiagoApplication.class
+org\example\PTSantiago\service\impl\StarWarsServiceImpl.class
+org\example\PTSantiago\service\StarWarsService.class
+org\example\PTSantiago\controller\StarWarsController.class

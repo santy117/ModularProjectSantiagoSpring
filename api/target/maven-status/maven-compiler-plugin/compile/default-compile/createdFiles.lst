@@ -1,0 +1,7 @@
+com\example\models\Captain.class
+com\example\models\MissionDTO.class
+com\example\models\Starship.class
+com\example\models\Planet.class
+com\example\api\StarWarsApi.class
+com\example\models\InfoMission.class
+com\example\models\ListMissionResponseDTO.class
