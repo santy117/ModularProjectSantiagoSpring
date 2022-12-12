@@ -28,6 +28,7 @@ mvn clean package
 ```
 This command will generate a JAR file located in \service\target\service-1.0-SNAPSHOT.jar   
 The database is deployed in Google Cloud to be able to connect anywhere, but we need to specify the password for the connection when executing the JAR file:    
+(The database will be available for a week for security reasons.)       
 ```
 java -jar .\service\target\service-1.0-SNAPSHOT.jar --spring.datasource.password=pruebaTecnica1234
 ```
