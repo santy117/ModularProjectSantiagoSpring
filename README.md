@@ -1,5 +1,5 @@
 # Technical work Spring + Star Wars API
-This work is a challenge from Eccocar to implement a API REST to manage staraships missions using swapi.
+This work is a challenge to implement a API REST to manage starships missions using swapi.
 
 I have used Java, Maven, Spring Boot, JPA, Hibernate, OpenAPI, Google Cloud and MySQL for this solution.
 
@@ -30,7 +30,7 @@ This command will generate a JAR file located in \service\target\service-1.0-SNA
 The database is deployed in Google Cloud to be able to connect anywhere, but we need to specify the password for the connection when executing the JAR file:    
 (The database will be available for a week for security reasons.)       
 ```
-java -jar .\service\target\service-1.0-SNAPSHOT.jar --spring.datasource.password=pruebaTecnica1234
+java -jar .\service\target\service-1.0-SNAPSHOT.jar --spring.datasource.password=??????
 ```
 The application will start in http://localhost:8080/ with a JSON body with the following parameters:
 
